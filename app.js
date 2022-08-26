@@ -1,26 +1,3 @@
-// the app.js file containing all the app code
-const gastosData = {
-  'Fixos': 2517.87,
-  'Variaveis': 3102.77,
-  'Salario': 4942,
-}
-
-const fixosData = {
-  'Contas': 400,
-  'Assinaturas': 300,
-  'Seguros': 150,
-  'Mesadas': 247,
-  'Impostos': 220,
-  'Outros': 350,
-}
-
-const variaveisData = {
-  'Compras': 1133.89,
-  'Restaurantes': 158.58,
-  'Mercado': 752.75,
-  'Carro': 448.63,
-}
-
 const CHART_COLORS = {
   red: 'rgba(255, 99, 132, 0.5)',
   orange: 'rgba(255, 159, 64, 0.5)',
@@ -40,6 +17,44 @@ const NAMED_COLORS = [
   CHART_COLORS.purple,
   CHART_COLORS.grey,
 ];
+
+// the app.js file containing all the app code
+fetch('http://localhost:8000/gastos')
+.then((response) => gastosData = response.json())
+.then(data => gastosData = data)
+.then(() => console.log(gastosData))
+
+// const gastosData = {
+//   'Fixos': 2517.87,
+//   'Variaveis': 3102.77,
+//   'Salario': 4942,
+// }
+
+fetch('http://localhost:8000/fixos')
+.then((response) => fixosData = response.json())
+.then(data => fixosData = data)
+.then(() => console.log(fixosData))
+
+// const fixosData = {
+//   'Contas': 400,
+//   'Assinaturas': 300,
+//   'Seguros': 150,
+//   'Mesadas': 247,
+//   'Impostos': 220,
+//   'Outros': 350,
+// }
+
+fetch('http://localhost:8000/variaveis')
+.then((response) => variaveisData = response.json())
+.then(data => variaveisData = data)
+.then(() => console.log(variaveisData))
+
+// const variaveisData = {
+//   'Compras': 1133.89,
+//   'Restaurantes': 158.58,
+//   'Mercado': 752.75,
+//   'Carro': 448.63,
+// }
 
 
 const dataGastosChart = {
