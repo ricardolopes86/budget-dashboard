@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+  }
 
 .container {
 	max-width: 100%;
@@ -5,11 +8,35 @@
 }
 
 .row {
-    display: flex;
-    flex-direction:row;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: stretch;
+    justify-content: stretch;
+    align-content: center;
     align-items: center;
-    justify-content: center;
+    grid-auto-rows: 1fr;
+    grid-gap: 20px;
 }
-.col {
-    flex: 1 1 0px;
+
+
+.fixos {
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.gastos {
+    height: 100%;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.variaveis {
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }

@@ -11,6 +11,7 @@ const fixosData = {
   'Seguros': 150,
   'Mesadas': 247,
   'Impostos': 220,
+  'Outros': 350,
 }
 
 const variaveisData = {
@@ -42,7 +43,7 @@ const NAMED_COLORS = [
 
 
 const dataGastosChart = {
-    labels: ["Composição de Gastos"],
+    labels: ["Total"],
     datasets: [{
       axis: 'y',
       label: "Variaveis",
@@ -74,13 +75,22 @@ const dataGastosChart = {
               y: {
                   stacked: true,
                   beginAtZero: false,
-                  gridLines: {display: false},
+                  GeolocationCoordinates: {display: false},
               },
               x: {
                   max: gastosData['Salario'],
                   stacked: true,
-                  gridLines: {display: false},
+                  grid: {display: false},
                 }
+          },
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Diferença de Gastos'
+            }
           }
     }
   };
@@ -115,6 +125,7 @@ const configFixos = {
       CHART_COLORS.purple,  // Bar 3
       CHART_COLORS.blue,    // Bar 4
       CHART_COLORS.yellow,  // bar 5
+      CHART_COLORS.grey,    // bar 6
     ],
     responsive: true,
     plugins: {
