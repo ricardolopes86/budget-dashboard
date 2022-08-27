@@ -21,7 +21,7 @@ const NAMED_COLORS = [
 // the app.js file containing all the app code
 fetch('http://localhost:8000/gastos')
 .then((response) => gastosData = response.json())
-.then(data => gastosData = data)
+.then(data => gastosData = data[0])
 .then(() => {
 
   const dataGastosChart = {
@@ -93,7 +93,7 @@ fetch('http://localhost:8000/gastos')
 
 fetch('http://localhost:8000/fixos')
 .then((response) => fixosData = response.json())
-.then(data => fixosData = data)
+.then(data => fixosData = data[0])
 .then(() => {
   const dataFixos = {
     labels: Object.keys(fixosData),
@@ -150,7 +150,7 @@ fetch('http://localhost:8000/fixos')
 
 fetch('http://localhost:8000/variaveis')
 .then((response) => variaveisData = response.json())
-.then(data => variaveisData = data)
+.then(data => variaveisData = data[0])
 .then(() => {
   const dataVariaveis = {
     labels: Object.keys(variaveisData),
