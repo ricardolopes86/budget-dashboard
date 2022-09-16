@@ -9,15 +9,36 @@
 
 .row {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 600px);
     justify-items: stretch;
     justify-content: stretch;
     align-content: center;
     align-items: center;
-    grid-auto-rows: 1fr;
-    grid-gap: 20px;
+    column-gap: 20px;
 }
 
+.col-1 {
+    grid-column: 1;
+}
+
+.col-2 {
+    grid-column: 2;
+}
+
+.col-3 {
+    grid-column: 3;
+}
+
+.col-row {
+    grid-column: 1 / -1;
+
+}
+
+.col-row div {
+    float: left;
+}
+.clearBoth { clear:both; }
 
 .fixos {
     padding: 10px;
@@ -39,4 +60,192 @@
     background-color: #f8f9fa;
     border-radius: 20px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+
+.button-17 {
+   align-items: center;
+   appearance: none;
+   background-color: #fff;
+   border-radius: 24px;
+   border-style: none;
+   box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+   box-sizing: border-box;
+   color: #3c4043;
+   cursor: pointer;
+   display: inline-flex;
+   fill: currentcolor;
+   font-family: "Google Sans",Roboto,Arial,sans-serif;
+   font-size: 14px;
+   font-weight: 500;
+   height: 48px;
+   justify-content: center;
+   letter-spacing: .25px;
+   line-height: normal;
+   max-width: 100%;
+   overflow: visible;
+   padding: 2px 24px;
+   position: relative;
+   text-align: center;
+   text-transform: none;
+   transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+   user-select: none;
+   -webkit-user-select: none;
+   touch-action: manipulation;
+   width: auto;
+   will-change: transform,opacity;
+   z-index: 0;
+}
+
+.button-17:hover {
+    background: #F6F9FE;
+    color: #174ea6;
+}
+
+.button-17:active {
+    box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+    outline: none;
+}
+
+.button-17:focus {
+    outline: none;
+    border: 2px solid #4285f4;
+}
+
+.button-17:not(:disabled) {
+    box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+.button-17:not(:disabled):hover {
+    box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
+}
+
+.button-17:not(:disabled):focus {
+    box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+.button-17:not(:disabled):active {
+    box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
+}
+
+.button-17:disabled {
+    box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+.select-box {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    font-family: 'Open Sans', 'Helvetica Neue', 'Segoe UI', 'Calibri', 'Arial', sans-serif;
+    font-size: 18px;
+    color: #60666d;
+
+@media (min-width: 768px) {
+    width: 70%;
+}
+
+@media (min-width: 992px) {
+    width: 50%;
+}
+
+@media (min-width: 1200px) {
+    width: 30%;
+}
+
+&__current {
+     position: relative;
+     box-shadow: 0 15px 30px -10px transparentize(#000, 0.9);
+     cursor: pointer;
+     outline: none;
+
+&:focus {
+& + .select-box__list {
+      opacity: 1;
+
+  // We have to set "animation-name: none;" to make the list visible (read below how it works)
+
+  animation-name: none;
+
+.select-box__option {
+    cursor: pointer;
+}
+}
+
+.select-box__icon {
+    transform: translateY(-50%) rotate(180deg);
+}
+}
+}
+
+&__icon {
+     position: absolute;
+     top: 50%;
+     right: 15px;
+     transform: translateY(-50%);
+     width: 20px;
+     opacity: 0.3;
+     transition: 0.2s ease;
+ }
+
+&__value {
+     display: flex;
+ }
+
+&__input {
+     display: none;
+
+&:checked + .select-box__input-text {
+     display: block;
+ }
+}
+
+&__input-text {
+     display: none;
+     width: 100%;
+     margin: 0;
+     padding: 15px;
+     background-color: #fff;
+ }
+
+&__list {
+     position: absolute;
+     width: 100%;
+     padding: 0;
+     list-style: none;
+     opacity: 0;
+
+ // We need to use animation with delay.
+ // Otherwise the click event will not have time to run on label, because this element disapears immediately when .select-box__current element loses the focus.
+ // This delay will not be noticed because we set "opacity" to "0".
+ // We also use "animation-fill-mode: forwards" to make the list stay hidden.
+
+ animation-name: HideList;
+     animation-duration: 0.5s;
+     animation-delay: 0.5s;
+     animation-fill-mode: forwards;
+     animation-timing-function: step-start;
+     box-shadow: 0 15px 30px -10px transparentize(#000, 0.9);
+ }
+
+&__option {
+     display: block;
+     padding: 15px;
+     background-color: #fff;
+
+&:hover,
+&:focus {
+     color: #546c84;
+     background-color: #fbfbfb;
+ }
+}
+}
+
+@keyframes HideList {
+    from {
+        transform: scaleY(1);
+    }
+    to {
+        transform: scaleY(0);
+    }
 }

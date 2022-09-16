@@ -11,21 +11,36 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col">
+            <div class="col col-1">
                 <div class="fixos">
                     <canvas id="fixosChart"></canvas>
                 </div>
             </div>
-            <div class="col">
+            <div class="col col-2">
                 <div class="gastos">
                     <canvas id="gastosChart"></canvas>
                 </div>
             </div>
-            <div class="col">
+            <div class="col col-3">
                 <div class="variaveis">
                     <canvas id="variaveisChart"></canvas>
                 </div>
-            </div>            
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-row">
+                <div>
+                    <span><select name="mes" id="mes" class="select-box">
+                        <option value="8">Agosto</option>
+                        <option value="9">Setembro</option>
+                    </select></span>
+                    <span><select name="ano" id="ano" class="select-box">
+                        <option value="2022">2022</option>
+                    </select></span>
+                    <span><button onclick="generateGraphs()" class="button-17" role="button">Carregar</button></span>
+                </div>
+                <div class="clearBoth"></div>
+            </div>
         </div>
     </div>
     
