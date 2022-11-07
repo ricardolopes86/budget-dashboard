@@ -121,12 +121,6 @@ function generateGraphs() {
         console.error('There has been a problem with your fetch operation:', error);
       });
 
-// const gastosData = {
-//   'Fixos': 2517.87,
-//   'Variaveis': 3102.77,
-//   'Salario': 4942,
-// }
-
   fetch(urlFixos)
       .then((response) => fixosData = response.json())
       .then(data => {
@@ -177,15 +171,6 @@ function generateGraphs() {
         console.error('There has been a problem with your fetch operation:', error);
       });
 
-// const fixosData = {
-//   'Contas': 400,
-//   'Assinaturas': 300,
-//   'Seguros': 150,
-//   'Mesadas': 247,
-//   'Impostos': 220,
-//   'Outros': 350,
-// }
-
   fetch(urlVariaveis)
       .then((response) => variaveisData = response.json())
       .then(data => {
@@ -234,12 +219,3 @@ function generateGraphs() {
         console.error('There has been a problem with your fetch operation:', error);
       });
 }
-//
-// generateGraphs();
-
-// const variaveisData = {
-//   'Compras': 1133.89,
-//   'Restaurantes': 158.58,
-//   'Mercado': 752.75,
-//   'Carro': 448.63,
-// }
