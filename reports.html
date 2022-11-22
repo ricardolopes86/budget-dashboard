@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <title>My Budget</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col col-1">
+                <div class="fixos">
+                    <canvas id="fixosChart"></canvas>
+                </div>
+            </div>
+            <div class="col col-2">
+                <div class="gastos">
+                    <canvas id="gastosChart"></canvas>
+                </div>
+            </div>
+            <div class="col col-3">
+                <div class="variaveis">
+                    <canvas id="variaveisChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-row">
+                <div>
+                    <span><select name="mes" id="mes" class="select-box">
+                        <option value="8">Agosto</option>
+                        <option value="9">Setembro</option>
+                        <option value="10">Outubro</option>
+                        <option value="11">Novembro</option>
+                        <option value="12">Dezembro</option>
+                    </select></span>
+                    <span><select name="ano" id="ano" class="select-box">
+                        <option value="2022">2022</option>
+                    </select></span>
+                    <span><button onclick="generateGraphs()" class="button-17" role="button">Carregar</button></span>
+                </div>
+                <div class="clearBoth"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="./app.js"></script>
+</body>
+</html>
