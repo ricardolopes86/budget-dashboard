@@ -42,9 +42,9 @@ function generateGraphs() {
   let mes = document.getElementById("mes").value
   let ano = document.getElementById("ano").value
 
-  let urlFixos = `http://localhost:8000/fixos/${mes}/${ano}/`
-  let urlGastos = `http://localhost:8000/gastos/${mes}/${ano}/`
-  let urlVariaveis = `http://localhost:8000/variaveis/${mes}/${ano}/`
+  let urlFixos = `http://localhost:8000/api/v1/fixos/${mes}/${ano}/`
+  let urlGastos = `http://localhost:8000/api/v1/gastos/${mes}/${ano}/`
+  let urlVariaveis = `http://localhost:8000/api/v1/variaveis/${mes}/${ano}/`
 
   destroyCharts()
 
