@@ -115,7 +115,7 @@
             </a>
         </header>
         <div class="container px-5 my-5">
-            <form id="contactForm" action="http://localhost:8000/api/gastos/" method="post">
+            <form id="formGastos" action="http://localhost:8000/api/gastos/" method="post">
                 <div class="form-floating mb-3">
                     <input class="form-control" id="gastosFixos" type="text" placeholder="Gastos Fixos"  />
                     <label for="gastosFixos">Gastos Fixos</label>
@@ -166,7 +166,16 @@
                 </div>
             </form>
         </div>
-
+        <script>
+            $('form#formGastos').on('submit', function(e) {
+                    e.preventDefault();
+                    const form = $(e.target);
+                    const formData = convertFormToJSON(form)
+                    const url = $('#formGastos').attr('action')
+                    postForm(formData, url)
+                }
+            );
+        </script>
         <footer class="pt-3 mt-4 text-muted border-top">&copy; 2022</footer>
     </div>
 </main>

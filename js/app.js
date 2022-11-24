@@ -36,12 +36,29 @@ function destroyCharts() {
   chartVariaveis.destroy()
 }
 
-$('#formEntrada').on('submit', function(e) {
-  e.preventDefault();
-  const formData = JSON.stringify(this);
-  console.log(formData)
+function convertFormToJSON(form) {
+  const array = $(form).serializeArray(); // Encodes the set of form elements as an array of names and values.
+  const json = {};
+  $.each(array, function () {
+    json[this.name] = this.value || "";
+  });
+  return json;
 }
-);
+
+function postForm(form, url, redirect) {
+  $.ajax({
+    type: "post",
+    url: url,
+    data: JSON.stringify(form),
+    dataType: "json",
+    success: function (data) {
+      $("#sucesso").show();
+      setTimeout(() => {
+        window.location.href = redirect;
+      }, 1000);
+    },
+  })
+}
 
 // the app.js file containing all the app code
 function generateGraphs() {
