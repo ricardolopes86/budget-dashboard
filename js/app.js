@@ -36,6 +36,12 @@ function destroyCharts() {
   chartVariaveis.destroy()
 }
 
+$('#formEntrada').on('submit', function(e) {
+  e.preventDefault();
+  const formData = JSON.stringify(this);
+  console.log(formData)
+}
+);
 
 // the app.js file containing all the app code
 function generateGraphs() {
