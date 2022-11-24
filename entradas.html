@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="" />
@@ -95,33 +96,33 @@
         </nav>
         <div class="container py-4">
     <div class="container px-5 my-5">
-        <form id="contactForm" action="http://localhost:9000/entradas" method="post">
+        <form id="formEntradas" onsubmit='return onSubmit(this)' action="http://localhost:9000/api/v1/fixos" method="post">
             <div class="form-floating mb-3">
-                <input class="form-control" id="contas" type="number" placeholder="Contas"  />
+                <input class="form-control" id="contas" name="contas" type="number" placeholder="Contas"  />
                 <label for="contas">Contas</label>
             </div>
             <div class="form-floating mb-3">
-                <input class="form-control" id="assinaturas" type="number" placeholder="Assinaturas"  />
+                <input class="form-control" id="assinaturas" name="assinaturas" type="number" placeholder="Assinaturas"  />
                 <label for="assinaturas">Assinaturas</label>
             </div>
             <div class="form-floating mb-3">
-                <input class="form-control" id="seguros" type="number" placeholder="Seguros"  />
+                <input class="form-control" id="seguros" name="seguros" type="number" placeholder="Seguros"  />
                 <label for="seguros">Seguros</label>
             </div>
             <div class="form-floating mb-3">
-                <input class="form-control" id="mesadas" type="number" placeholder="Mesadas"  />
+                <input class="form-control" id="mesadas" name="mesadas" type="number" placeholder="Mesadas"  />
                 <label for="mesadas">Mesadas</label>
             </div>
             <div class="form-floating mb-3">
-                <input class="form-control" id="impostos" type="number" placeholder="Impostos"  />
+                <input class="form-control" id="impostos" name="impostos" type="number" placeholder="Impostos"  />
                 <label for="impostos">Impostos</label>
             </div>
             <div class="form-floating mb-3">
-                <input class="form-control" id="outros" type="number" placeholder="Outros"  />
+                <input class="form-control" id="outros" name="outros" type="number" placeholder="Outros"  />
                 <label for="outros">Outros</label>
             </div>
             <div class="form-floating mb-3">
-                <select class="form-select" id="mes" aria-label="Mês">
+                <select class="form-select" id="mes" name="mes" aria-label="Mês">
                     <option value="01">Janeiro</option>
                     <option value="02">Fevereiro</option>
                     <option value="03">Março</option>
@@ -138,20 +139,12 @@
                 <label for="mes">Mês</label>
             </div>
             <div class="form-floating mb-3">
-                <select class="form-select" id="ano" aria-label="Ano">
+                <select class="form-select" id="ano" name="ano" aria-label="Ano">
                     <option value="2021">2021</option>
                     <option value="2022">2022</option>
                     <option value="2023">2023</option>
                 </select>
                 <label for="ano">Ano</label>
-            </div>
-            <div class="d-none" id="submitSuccessMessage">
-                <div class="text-center mb-3">
-                    <div class="fw-bolder">Formulário submetido com sucesso!</div>
-                </div>
-            </div>
-            <div class="d-none" id="submitErrorMessage">
-                <div class="text-center text-danger mb-3">Erro enviando o formulário!</div>
             </div>
             <div class="d-grid">
                 <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Enviar</button>
@@ -161,7 +154,33 @@
             <footer class="pt-3 mt-4 text-muted border-top">&copy; 2022</footer>
         </div>
     </main>
+    <script>
 
+        function convertFormToJSON(form) {
+            const array = $(form).serializeArray(); // Encodes the set of form elements as an array of names and values.
+            const json = {};
+            $.each(array, function () {
+                json[this.name] = this.value || "";
+            });
+            return json;
+        }
+
+        $( "#formEntradas" ).submit(function( e ) {
+            e.preventDefault();
+            const form = $(e.target);
+            const json = convertFormToJSON(form);
+            const actionUrl = form.attr('action');
+            $.ajax({
+                type: "POST",
+                url: actionUrl,
+                data: JSON.stringify(json),
+                success: function (data) {
+                    console.log("submit with success:" + data)
+                }
+            })
+        });
+
+    </script>
     <script src="./app.js"></script>
 </body>
 </html>
