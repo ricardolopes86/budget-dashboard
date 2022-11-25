@@ -115,6 +115,10 @@
             </a>
         </header>
         <div class="container px-5 my-5">
+            <div id="sucesso" class="alert alert-success alert-dismissible fade show" role="alert" style="display:none;">
+                <strong>Sucesso!</strong> Formulário enviado. Redirecionando...
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
             <form id="formGastos" action="http://localhost:8000/api/gastos/" method="post">
                 <div class="form-floating mb-3">
                     <input class="form-control" id="gastosFixos" type="text" placeholder="Gastos Fixos"  />
@@ -172,7 +176,7 @@
                     const form = $(e.target);
                     const formData = convertFormToJSON(form)
                     const url = $('#formGastos').attr('action')
-                    postForm(formData, url)
+                    postForm(formData, url, 'gastos.html')
                 }
             );
         </script>
