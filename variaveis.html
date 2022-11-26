@@ -72,22 +72,22 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         <div class="container px-5 my-5">
-            <form id="formVariaveis" action="http://localhost:9000/api/v1/variaveis" method="post">
+            <form id="formVariaveis" action="http://localhost:8000/api/v1/variaveis" method="post">
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="compras" name="compras" type="number" placeholder="Compras"/>
+                    <input class="form-control" id="compras" name="Compras" type="number" placeholder="Compras"/>
                     <label for="compras">Compras</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="restaurantes" name="restaurantes" type="number"
+                    <input class="form-control" id="restaurantes" name="Restaurantes" type="number"
                            placeholder="Restaurantes"/>
                     <label for="restaurantes">Restaurantes</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="mercado" name="mercado" type="number" placeholder="Mercado"/>
+                    <input class="form-control" id="mercado" name="Mercado" type="number" placeholder="Mercado"/>
                     <label for="mercado">Mercado</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="carro" name="carro" type="number" placeholder="Carro"/>
+                    <input class="form-control" id="carro" name="Carro" type="number" placeholder="Carro"/>
                     <label for="carro">Carro</label>
                 </div>
                 <div class="form-floating mb-3">
@@ -137,6 +137,7 @@
             const form = $(e.target);
             const formData = convertFormToJSON(form)
             const url = $('#formVariaveis').attr('action')
+            console.log(JSON.stringify(formData))
             postForm(formData, url, 'variaveis.html')
         }
     );
