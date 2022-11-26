@@ -51,10 +51,13 @@
                         <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="gastos.html">Gastos</a>
+                        <a class="nav-link" href="gastos.html">Gastos x Entradas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="entradas.html">Entradas</a>
+                        <a class="nav-link" href="fixos.html">Fixos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="variaveis.html">Variáveis</a>
                     </li>
                 </ul>
                 <form role="search">
@@ -142,7 +145,7 @@
             const form = $(e.target);
             const formData = convertFormToJSON(form)
             const url = $('#formFixos').attr('action')
-            postForm(formData, url, 'entradas.html')
+            postForm(formData, url, 'fixos.html')
         }
     );
 </script>

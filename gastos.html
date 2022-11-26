@@ -4,11 +4,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content=""/>
-    <meta
-            name="author"
-            content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
-    />
-    <meta name="generator" content="Hugo 0.84.0"/>
+
     <title>Controler Financeiro</title>
 
     <!-- Bootstrap core CSS -->
@@ -18,33 +14,6 @@
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
             crossorigin="anonymous"
     />
-
-    <!-- Favicons -->
-    <link
-            rel="apple-touch-icon"
-            href="img/favicons/apple-touch-icon.png"
-            sizes="180x180"
-    />
-    <link
-            rel="icon"
-            href="img/favicons/favicon-32x32.png"
-            sizes="32x32"
-            type="image/png"
-    />
-    <link
-            rel="icon"
-            href="img/favicons/favicon-16x16.png"
-            sizes="16x16"
-            type="image/png"
-    />
-    <link rel="manifest" href="img/favicons/manifest.json"/>
-    <link
-            rel="mask-icon"
-            href="img/favicons/safari-pinned-tab.svg"
-            color="#7952b3"
-    />
-    <link rel="icon" href="img/favicons/favicon.ico"/>
-    <meta name="theme-color" content="#7952b3"/>
 
     <style>
         .bd-placeholder-img {
@@ -61,6 +30,7 @@
             }
         }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
 <main>
@@ -77,10 +47,13 @@
                         <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="gastos.html">Gastos</a>
+                        <a class="nav-link" href="gastos.html">Gastos x Entradas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="entradas.html">Entradas</a>
+                        <a class="nav-link" href="fixos.html">Fixos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="variaveis.html">Variáveis</a>
                     </li>
                 </ul>
                 <form role="search">
@@ -119,30 +92,30 @@
                 <strong>Sucesso!</strong> Formulário enviado. Redirecionando...
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-            <form id="formGastos" action="http://localhost:8000/api/v1/gastos/" method="post">
+            <form id="formGastos" action="http://localhost:8000/api/v1/gastos" method="post">
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="gastosFixos" type="text" placeholder="Gastos Fixos"  />
-                    <label for="gastosFixos">Gastos Fixos</label>
+                    <input class="form-control" id="Fixos" name="Fixos" type="text" placeholder="Gastos Fixos"  />
+                    <label for="Fixos">Gastos Fixos</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="gastosVariaveis" type="text" placeholder="Gastos Variáveis"  />
-                    <label for="gastosVariaveis">Gastos Variáveis</label>
+                    <input class="form-control" id="Variaveis" name="Variaveis" type="text" placeholder="Gastos Variáveis"  />
+                    <label for="Variaveis">Gastos Variáveis</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="salario" type="text" placeholder="Salário"  />
-                    <label for="salario">Salário</label>
+                    <input class="form-control" id="Salario" name="Salario" type="text" placeholder="Salário"  />
+                    <label for="Salario">Salário</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <select class="form-select" id="mes" aria-label="Mês">
-                        <option value="01">01</option>
-                        <option value="02">02</option>
-                        <option value="03">03</option>
-                        <option value="04">04</option>
-                        <option value="05">05</option>
-                        <option value="06">06</option>
-                        <option value="07">07</option>
-                        <option value="08">08</option>
-                        <option value="09">09</option>
+                    <select class="form-select" id="mes" name="mes" aria-label="Mês">
+                        <option value="1">01</option>
+                        <option value="2">02</option>
+                        <option value="3">03</option>
+                        <option value="4">04</option>
+                        <option value="5">05</option>
+                        <option value="6">06</option>
+                        <option value="7">07</option>
+                        <option value="8">08</option>
+                        <option value="9">09</option>
                         <option value="10">10</option>
                         <option value="11">11</option>
                         <option value="12">12</option>
@@ -150,20 +123,12 @@
                     <label for="mes">Mês</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <select class="form-select" id="ano" aria-label="Ano">
+                    <select class="form-select" id="ano" name="ano" aria-label="Ano">
                         <option value="2021">2021</option>
                         <option value="2022">2022</option>
                         <option value="2023">2023</option>
                     </select>
                     <label for="ano">Ano</label>
-                </div>
-                <div class="d-none" id="submitSuccessMessage">
-                    <div class="text-center mb-3">
-                        <div class="fw-bolder">Formulário enviado!</div>
-                    </div>
-                </div>
-                <div class="d-none" id="submitErrorMessage">
-                    <div class="text-center text-danger mb-3">Erro ao enviar o formulário!</div>
                 </div>
                 <div class="d-grid">
                     <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Enviar</button>
@@ -171,7 +136,7 @@
             </form>
         </div>
         <script>
-            $('form#formGastos').on('submit', function(e) {
+            $('form#formGastos').on('submit', function (e) {
                     e.preventDefault();
                     const form = $(e.target);
                     const formData = convertFormToJSON(form)
@@ -183,5 +148,6 @@
         <footer class="pt-3 mt-4 text-muted border-top">&copy; 2022</footer>
     </div>
 </main>
+<script src="js/app.js" ></script>
 </body>
 </html>

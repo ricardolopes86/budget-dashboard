@@ -51,6 +51,7 @@ function postForm(form, url, redirect) {
     url: url,
     data: JSON.stringify(form),
     dataType: "json",
+    contentType:"application/json; charset=utf-8",
     success: function (data) {
       $("#sucesso").show();
       setTimeout(() => {
